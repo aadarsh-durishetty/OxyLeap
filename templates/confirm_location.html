@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Confirm Your Location</h2>
+    <form method="POST">
+        <div class="row">
+            <div class="col">
+                <label for="city" class="form-label">City/Town</label>
+                <input type="text" class="form-control" id="city" name="city" value="{{ city }}">
+            </div>
+            <div class="col">
+                <label for="state" class="form-label">State</label>
+                <input type="text" class="form-control" id="state" name="state" value="{{ state }}">
+            </div>
+            <div class="col">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" class="form-control" id="country" name="country" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Confirm Location</button>
+    </form>
+{% endblock %}

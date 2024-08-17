@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    #logo-image {
+        max-width: 400px; /* Adjust the width of the logo */
+        max-height: 400px;
+        margin-bottom: -40px; /* Adjust the space below the logo */
+        transition: transform 0.3s;
+        cursor: pointer;
+        margin-left: -50px;
+    }
+    #logo-image:hover {
+        transform: scale(1.1);
+    }
+
+    #site-description {
+        font-size: 20px; /* Adjust the font size of the description */
+        color: #252121; /* Adjust the color of the description */
+        text-align: center; /* Ensure the text is centered */
+        margin-top: -70px; /* Adjust the space above the description */
+        font-weight: 500;
+        font-style: italic;
+        margin-left: -30px;
+        margin-right: 30px;
+    }
+
+    .signin-container {
+        background-color: #f8f9fa; /* Light grey background */
+        padding: 30px;
+        border-radius: 40px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    }
+
+    .signin-container h2 {
+        font-weight: 600;
+        color: #343a40; /* Dark grey text */
+    }
+
+    .signin-container .form-label {
+        font-weight: 500;
+        color: #495057; /* Grey text */
+        border-radius: 50px;
+    }
+
+    .signin-container .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 40px;
+    }
+    #username, #password{
+        border-radius: 50px;
+    }
+    .signin-container .text-center{
+        font-weight: 500;
+    }
+
+</style>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+        <!-- Logo Image -->
+        <img id="logo-image" src="{{ url_for('static', filename='oxyleap_logo.png') }}" alt="OxyLeap Logo" class="img-fluid mb-3">
+        
+        <!-- Description -->
+        <p id="site-description" class="text-center">OxyLeap is your trusted platform for finding the best healthcare facilities near you. 
+        We save our most important commodity, your time.</p>
+    </div>
+
+    <div class="col-md-4">
+        <div class="signin-container">
+            <h2 class="mb-4 text-center">Sign In</h2>
+            <form method="POST" action="{{ url_for('signin') }}">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign In</button>
+            </form>
+            <p class="mt-3 text-center">Don't have an account? <a href="{{ url_for('signup') }}">Sign Up</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

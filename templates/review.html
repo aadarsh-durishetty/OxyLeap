@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        /* Custom styles for the review page */
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .card {
+            border-radius: 20px;
+            border: none;
+            padding: 30px;
+            background-color: #f7f7f9;
+        }
+
+        h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 500;
+            font-style: italic;
+            color: #004ea2;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            box-shadow: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        textarea.form-control {
+            resize: none;
+        }
+
+        .star-rating {
+            direction: rtl;
+            display: inline-flex;
+            font-size: 2rem;
+            unicode-bidi: bidi-override;
+        }
+
+        .star-rating input {
+            display: none;
+        }
+
+        .star-rating label {
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffca28;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+
+    <div class="container mt-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="mb-4 text-center">Leave a Review for OxyLeap. {{ hospital.name }}</h2>
+            <form method="POST">
+                <div class="mb-4">
+                    <label for="review" class="form-label">Your Review</label>
+                    <textarea class="form-control" id="review" name="review" rows="5" placeholder="Share your experience..." required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="rating" class="form-label d-block">Your Rating</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+                    </div>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript is not needed since the CSS handles the hover and selection states.
+    </script>
+{% endblock %}

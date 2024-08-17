@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center">Find a Hospital by Location</h2>
+        <form method="POST" class="bg-light p-4 rounded shadow-sm">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label for="city" class="form-label">City/Town</label>
+                    <select class="form-select" id="city" name="city">
+                        <option value="">select city/town</option>
+                        {% for city in cities %}
+                            <option value="{{ city }}">{{ city }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="state" class="form-label">State</label>
+                    <select class="form-select" id="state" name="state">
+                        <option value="">select state</option>
+                        {% for state in states %}
+                            <option value="{{ state }}">{{ state }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="county" class="form-label">County</label>
+                    <select class="form-select" id="county" name="county">
+                        <option value="">select county</option>
+                        {% for county in counties %}
+                            <option value="{{ county }}">{{ county }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="hospital_type" class="form-label">Hospital Type</label>
+                    <select class="form-select" id="hospital_type" name="hospital_type">
+                        <option value="">select hospital type</option>
+                        {% for hospital_type in hospital_types %}
+                            <option value="{{ hospital_type }}">{{ hospital_type }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn btn-primary px-5">Search</button>
+            </div>
+        </form>
+
+        <h3 class="mt-5 text-center">Hospitals Found</h3>
+        <ul class="list-group list-group-flush mt-4">
+            {% for hospital in hospitals %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>{{ hospital.name }}</strong><br>
+                        {{ hospital.city }}, {{ hospital.state }} - {{ hospital.telephone }}
+                    </div>
+                    <a href="{{ url_for('confirm_location', hospital_id=hospital.facility_id) }}">
+                        <img src="{{ url_for('static', filename='map.png') }}" alt="Map" class="map-icon" 
+                             style="width: 30px; height: 30px; cursor: pointer;">
+                    </a>
+                </li>
+            {% else %}
+                <li class="list-group-item text-center text-muted">No hospitals found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <style>
+        .btn-primary{
+            border-radius: 30px;
+            font-weight: 500;
+        }
+        body {
+            background-color: #f0f2f5;
+        }
+
+        h2,h3 {
+            font-weight: 600;
+            font-style: italic;
+            color: #004ea2;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #495057;
+        }
+
+        .list-group-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+
+        .list-group-item:hover {
+            background-color: #c3e1ff;
+            transition: background-color 0.3s ease;
+            transform: scale(1.05);
+        }
+
+        .map-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .map-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+{% endblock %}

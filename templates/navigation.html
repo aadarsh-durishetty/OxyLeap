@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    h2{
+        text-align: center;
+        font-weight: 600;
+        font-style: italic;
+        color: #004ea2;
+    }
+</style>
+    <h2>Navigation to Hospital</h2>
+    <div>
+        <!-- The map will be rendered here -->
+        {{ map_html|safe }}
+    </div>
+{% endblock %}
