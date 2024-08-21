@@ -1,0 +1,58 @@
+OxyLeap
+
+Sign up page: email id, username, password.
+email id, username and password should be stored in database which is integrated to website.
+bottom should be link to sign in if already registered
+
+Sign in page: username, password.
+-validate with database connected-
+bottom should be link to sign up if not registered
+
+navigate to page1: button options
+
+"Location" - when clicked should navigate to a page with four drop down buttons side by side on same row which contains City/Town, State, County/Parish, Hospital type - options respectively.
+now when selected the map should be visible with selected details location pointed and should display the best and shortest route with a line.
+make use of any free map api for this but, this should be efficient.
+
+"Health centers" - when clicked should show all the hospitals list with search method on the top right of page. And beside each hospital name a green, yellow or red mark should be made visible based on activity of active beds from dataset of each hospital with name of their Facility ID, to determine color a machine learning pattern should be analyzed from yearly entry of active and inactive beds column in the dataset.
+
+"Emergency" - when clicked should show all the hospitals list with telephone, Address where Emergency Services is "Yes".
+now, the distance from current user location and time taken along with probability of no of vacant beds should be shown.
+
+"Acute Care" - when clicked should show all the hospitals list with telephone, Address where Hospital type is "Acute Care Hospitals".
+now, the distance from current user location and time taken along with probability of no of vacant beds should be shown. 
+
+"Critical Care" - when clicked should show all the hospitals list with telephone, Address where Hospital type is "Critical Access Hospitals".
+now, the distance from current user location and time taken along with probability of no of vacant beds should be shown.
+
+"Childrens" - when clicked should show all the hospitals list with telephone, Address where Hospital type is "Childrens".
+now, the distance from current user location and time taken along with probability of no of vacant beds should be shown.
+
+"Psychiatric" - when clicked should show all the hospitals list with telephone, Address where Hospital type is "Psychiatric".
+now, the distance from current user location and time taken along with probability of no of vacant beds should be shown.
+
+"Review" - Users can drop a review about their experience along with the star rating feature, it should be stored in records section.
+
+"Records" - reviews should be visible over here as a timestamp. 
+
+for probablility of vacant beds use a machine learning model from the dataset of each facility id stored in a folder in project repository.
+
+
+
+-- hospital bio --
+
+-> for each hospital under each category:
+hospital should be clickable:
+- when clicked should navigate to page -- hospital_about.html
+which includes:
+
+- hospital name
+- address, city, state, county
+- telephone
+
+- description about the hospital including the year it got established, history and all the services offered along with their speciality, available timings, best time to call.
+
+bottom of the page should show a bar graph to  determine busy hours, 
+x-axis : day
+y-axis : time
+ 
