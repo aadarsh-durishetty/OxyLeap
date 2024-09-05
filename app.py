@@ -356,7 +356,9 @@ def records():
 
 if __name__ == '__main__':
     import_hospital_dataset('data/hospital_dataset.csv')  # Import data from the CSV file
-    app.run(debug=True)
+    from gevent import pywsgi
+    from geventwebsocket.handler import WebSocketHandler
+    pywsgi.WSGIServer(('', 8080), app, handler_class=WebSocketHandler).serve_forever()
 
 
 
